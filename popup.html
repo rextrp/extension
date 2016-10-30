@@ -1,38 +1,50 @@
-<!doctype html>
-<!--
- This page is shown when the extension button is clicked, because the
- "browser_action" field in manifest.json contains the "default_popup" key with
- value "popup.html".
- -->
-<html>
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <style>
-      body {
-        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-        font-size: 100%;
-      }
-      #status {
-        /* avoid an excessively wide status text */
-        white-space: pre;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        max-width: 400px;
-      }
-    </style>
+<!DOCTYPE html>
+<?php 
+	header("Content-Type: text/html; charst=utf-8");
+	//*************cookie安全性用**********//
+	ini_set("session.use_only_cookies"	, 1);
+	ini_set("session.cookie_httponly" 	, 1);
+	ini_set("session.use_strict_mode" 	, 1);
+	ini_set("session.use_trans_sid"		, 0);
+	//*************cookie安全性用**********//	
+	error_reporting(E_ALL);
+	ini_set("log_errors", 1);
+	ini_set("error_log", "ref/php-error.log");
+	
+	require_once("ref/pdoDBclass.php");
 
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
-    <script src="popup.js"></script>
-  </head>
-  <body>
-	<div><h1>VocabJET</h1></div>
-    <div id="status"></div>
-    <img id="image-result" hidden>
-  </body>
+?>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="VocabJET extension">
+<meta name="author" content="Rex">
+<link rel="icon" href="img/favicon.ico">
+
+<title>請登入VocabJET</title>
+<link href="ref/reset.css" rel="stylesheet">
+<link href="ref/bootstrap.min.css" rel="stylesheet">
+<link href="ref/signin.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container" style="height:auto;">
+		<h3 class="form-signin-heading" style="padding-left:8px;">登入VocabJET</h3>
+		<form class="form-signin" style="width:250px;">			
+			<label for="inputEmail" class="sr-only">帳號</label>
+			<input type="email" id="inputEmail" class="form-control" placeholder="請輸入電子郵件信箱" required autofocus>
+			<label for="inputPassword" class="sr-only">密碼</label>
+			<input type="password" id="inputPassword" class="form-control" placeholder="請輸入密碼" required>
+			<div class="checkbox">
+			  <label>
+				<input type="checkbox" value="remember-me"> 保持登入
+			  </label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" style="margin-top:10px;" type="submit">確定</button>
+		</form>
+	</div>
+</body>
 </html>
 
