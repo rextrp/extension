@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
-  "description": "This extension shows a Google Image search result for the current page",
-  "version": "1.0",
+  "name": "VocabJET",
+  "description": "Selected sentence will be sent to VocabJET builder for processing.",
+  "version": "0.1",
 
   "browser_action": {
     "default_icon": 	"icon.png",
@@ -13,11 +13,6 @@
   "icons": {
           "16": "icon16.png"
   },
-  "permissions": [
-	"contextMenus"
-  ],
-  "background": {
-    "persistent": false,
-    "scripts": ["popup.js"]
-  }  
+  "permissions": [ "contextMenus" ],
+  "background": { "persistent": false, "scripts": [ "popup.js" ] }  
 }
